@@ -40,3 +40,4 @@
       with_fileglob:
         - /etc/jenkins_jobs/jobs/*.yml
       register: output
+    - debug: var=output
