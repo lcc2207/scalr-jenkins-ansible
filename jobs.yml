@@ -1,0 +1,4 @@
+---
+jobs:
+  - {name: 'dev-app-1', git: 'https://github.com/lcc2207/test1.git', farmtemp: 'https://raw.githubusercontent.com/lcc2207/scalr-demo-farm/master/web-server.json', stage_job: 'stage-app-1'}
+  - {name: 'stage-app-1', git: 'https://github.com/lcc2207/test1.git', farmtemp: 'https://raw.githubusercontent.com/lcc2207/scalr-demo-farm/master/web-server.json', stage_job: ''}

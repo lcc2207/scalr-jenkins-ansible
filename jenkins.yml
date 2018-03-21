@@ -1,0 +1,43 @@
+---
+- hosts: localhost
+  become: True
+  connection: local
+  vars_files:
+   - vars.yml
+  vars:
+    jenkins_hostname: localhost
+    jenkins_plugins:
+      - github
+  pre_tasks:
+    - include: java-8.yml
+  roles:
+    - geerlingguy.jenkins
+  tasks:
+    - name: get jenkins_job
+      include_vars: ./jobs.yml
+    - package: name={{item}}
+      with_items:
+        - jq
+    - pip: name={{item}} state=latest
+      with_items:
+        - pip
+        - yamllint
+        - jenkins-job-builder
+        - scalr-ctl
+    - file:
+        path: /etc/jenkins_jobs/{{ item }}
+        state: directory
+      with_items:
+        - jobs
+        - config
+    - template: src="./templates/scalr.conf.tmp" dest="/etc/jenkins_jobs/config/{{ item }}-conf.yml" mode=0600 owner="jenkins" group="jenkins"
+      with_items:
+        - dev-app-1
+        - stage-app-1
+    - template: src="./templates/jenkins_jobs.ini.tmp" dest="/etc/jenkins_jobs/jenkins_jobs.ini" mode=0600 owner="jenkins" group="jenkins"
+    - template: src="./templates/jenkins_job.tmp" dest="/etc/jenkins_jobs/jobs/{{item.name}}.yml" mode=0600 owner="jenkins" group="jenkins"
+      with_items: {{ jobs }}
+    - command: /usr/local/bin/jenkins-jobs update {{item}}
+      with_fileglob:
+        - /etc/jenkins_jobs/jobs/*.yml
+      register: output
