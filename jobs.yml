@@ -1,4 +1,4 @@
 ---
 jobs:
-  - {name: 'dev-app-1', git: 'https://github.com/lcc2207/test1.git', stage_job: 'stage-app-1'}
-  - {name: 'stage-app-1', git: 'https://github.com/lcc2207/test1.git', stage_job: ''}
+  - {name: 'dev-app-1', git: 'https://github.com/lcc2207/test1.git', farmtemp: 'web-server.json', stage_job: 'stage-app-1'}
+  - {name: 'stage-app-1', git: 'https://github.com/lcc2207/test1.git', farmtemp: 'web-server.json', stage_job: ''}
