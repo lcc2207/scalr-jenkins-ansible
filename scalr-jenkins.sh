@@ -11,7 +11,8 @@ cd scalr-jenkins-ansible/
 # pull down required ansible roles
 ansible-galaxy install --roles-path . geerlingguy.jenkins
 
-echo Pa55w0rd > ./vault
+# driven from global variables 
+echo $jenkins_demo > ./vault
 
 # execute the jenkins install playbook
 ansible-playbook -i localhost jenkins.yml --vault-id ./vault
