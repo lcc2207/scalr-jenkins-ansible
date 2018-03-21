@@ -7,8 +7,10 @@
           url: {{ item.git }}
           branches:
             - origin/master
+{% if item.stage_job %}
     triggers:
       - pollscm: "*/5 * * * *"
+{% endif %}
     defaults: global
     description: ''
     disabled: false
@@ -26,7 +28,7 @@
 {% if item.stage_job %}
     publishers:
       - trigger:
-         project: {{ item.stage_job }} 
+         project: {{ item.stage_job }}
          threshold: SUCCESS
 {% endif %}
     builders:
@@ -36,7 +38,7 @@
 
           # Create farm and get ID
           export farm_template=$JOB_NAME.json
-          curl {{item.farmtemp }}  | jq '.farm.name=env.FName' > $farm_template
+          cat {{item.farmtemp }}  | jq '.farm.name=env.FName' > $farm_template
           export farmid=`scalr-ctl --config $config farms create-from-template --stdin < $farm_template | jq '.data.id'`
           echo $farmid
 
