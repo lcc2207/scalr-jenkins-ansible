@@ -7,7 +7,7 @@
    - jobs.yml
   vars:
     jenkins_hostname: localhost
-    jenkins_plugins:
+    jenkins_plugin:
       - github
   pre_tasks:
     - include: java-8.yml
