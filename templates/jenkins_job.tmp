@@ -60,8 +60,11 @@
           while [ "$serverstatus" != "running" ]
            do echo "Status: $serverstatus"
           	export serverstatus=`scalr-ctl --config $config servers get --serverId $serverid | jq '.data.status'| tr -d '"'`
-          	sleep 10
+          	sleep 30
           done
+
+          # sleep 60 to give scalr time to run scripts
+          sleep 60
 
           # get orchestration log id
           export orchlogid=`scalr-ctl --config $config scripts list-orchestration-logs | jq ".data[] | select(.server.id | contains($orchserverid)).id"| sed "s/\"//g"`
@@ -82,7 +85,7 @@
           while [ "$serverstatus" != "terminated" ]
            do echo "Status: $serverstatus"
           	export serverstatus=`scalr-ctl --config $config servers get --serverId $serverid | jq '.data.status'| tr -d '"'`
-          	sleep 10
+          	sleep 30
           done
 
           # delete farm
