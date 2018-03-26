@@ -30,7 +30,7 @@
         - jobs
         - config
     - template: src="./templates/jenkins_jobs.ini.tmp" dest="/etc/jenkins_jobs/jenkins_jobs.ini" mode=0600 owner="jenkins" group="jenkins"
-    - template: src="./templates/scalr.conf.tmp" dest="/etc/jenkins_jobs/config/{{ item }}-conf.yml" mode=0600 owner="jenkins" group="jenkins"
+    - template: src="./templates/scalr.conf.tmp" dest="/etc/jenkins_jobs/config/{{ item.name }}-conf.yml" mode=0600 owner="jenkins" group="jenkins"
       with_items: "{{ jobs }}"
     - template: src="./templates/jenkins_job.tmp" dest="/etc/jenkins_jobs/jobs/{{item.name}}.yml" mode=0600 owner="jenkins" group="jenkins"
       with_items: "{{ jobs }}"
