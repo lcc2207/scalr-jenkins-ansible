@@ -77,7 +77,7 @@
            then
            exit 1
           fi
-
+      {% if item.stage_job %}
           # clean up
           scalr-ctl --config $config farms terminate --farmId $farmid
 
@@ -90,3 +90,4 @@
 
           # delete farm
           scalr-ctl --config $config farms delete --farmId $farmid
+      {% endif %}
