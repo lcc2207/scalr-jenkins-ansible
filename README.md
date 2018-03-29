@@ -1,6 +1,6 @@
 # scalr-jenkins-ansible
 
-# requirements
+# Requirements
 - OS Ubuntu 16.04
 - vars.yml (more information below)
 - ansible version 2.4.0
