@@ -21,9 +21,7 @@ envId: 1
 ```
 
 # Ansible Vaulting the vars.yml file.
-```
 ansible-vault create vars.yml
-<<<<<<< HEAD
 
 
 # farm template example
@@ -125,6 +123,4 @@ ansible-vault create vars.yml
 
 
 
-=======
->>>>>>> 5f2695d9ba7dd2c539093bff333a5058a49db13c
 ```
