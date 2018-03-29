@@ -1,6 +1,6 @@
 # scalr-jenkins-ansible
 
-# requirements
+# Requirements
 - OS Ubuntu 16.04
 - vars.yml (more information below)
 - ansible version 2.4.0
@@ -8,7 +8,7 @@
   (in this example the variable name is $jenkins_demo)
 
 # Scalr script
-the **scalr-jenkins.sh** is the script that needs to be added to Scalr Scripts
+The **scalr-jenkins.sh** is the script that needs to be added to Scalr Scripts
 
 # vars.yml - contents
 ```yaml
@@ -21,8 +21,9 @@ envId: 1
 ```
 
 # Ansible Vaulting the vars.yml file.
-
+```
 ansible-vault create vars.yml
+<<<<<<< HEAD
 
 
 # farm template example
@@ -124,4 +125,6 @@ ansible-vault create vars.yml
 
 
 
+=======
+>>>>>>> 5f2695d9ba7dd2c539093bff333a5058a49db13c
 ```
