@@ -8,7 +8,7 @@
   (in this example the variable name is $jenkins_demo)
 
 # Scalr script
-the **scalr-jenkins.sh** is the script that needs to be added to Scalr Scripts
+The **scalr-jenkins.sh** is the script that needs to be added to Scalr Scripts
 
 # vars.yml - contents
 ```yaml
@@ -21,5 +21,6 @@ envId: 1
 ```
 
 # Ansible Vaulting the vars.yml file.
-
+```
 ansible-vault create vars.yml
+```
