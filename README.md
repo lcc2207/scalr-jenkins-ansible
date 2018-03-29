@@ -8,7 +8,7 @@
   (in this example the variable name is $jenkins_demo)
 
 # Scalr script
-the scalr-jenkins.sh is the script that needs to be added to Scalr Scripts
+the <**** scalr-jenkins.sh</**** is the script that needs to be added to Scalr Scripts
 
 # vars.yml - contents
 ---
