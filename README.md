@@ -1,8 +1,16 @@
 # scalr-jenkins-ansible
 
-To use this playbook you will need to create a vars.yml vars_files
+# requirements
+- OS Ubuntu 16.04
+- vars.yml (more information below)
+- ansible version 2.4.0
+- scalr global variable that contains the ansible vault password
+  (in this example the variable name is $jenkins_demo)
 
-## vars.yml - contents
+# Scalr script
+the scalr-jenkins.sh is the script that needs to be added to Scalr Scripts
+
+# vars.yml - contents
 ---
 scarlserver: yourscalr.server.com
 key_id: xxxxx
