@@ -23,3 +23,105 @@ envId: 1
 # Ansible Vaulting the vars.yml file.
 
 ansible-vault create vars.yml
+
+
+# farm template example
+```json
+{
+    "_meta": {
+        "schema_version": "v1beta0-7.8.0"
+    },
+    "farm": {
+        "name": "prod-docker-cicd",
+        "description": "",
+        "project": {
+            "id": "xxxxxxx"
+        },
+        "timezone": "America\/New_York",
+        "launchOrder": "simultaneous",
+        "variables": []
+    },
+    "roles": [
+        {
+            "alias": "base-ubuntu1604-hvm",
+            "role": {
+                "name": "base-ubuntu1604-hvm"
+            },
+            "cloudPlatform": "ec2",
+            "cloudLocation": "us-west-1",
+            "instanceType": {
+                "id": "t2.medium"
+            },
+            "launchIndex": 0,
+            "advancedConfiguration": {
+                "disableAgentIptablesManagement": false,
+                "disableAgentNtpManagement": false,
+                "rebootAfterHostInit": false
+            },
+            "scaling": {
+                "considerSuspendedServers": "running",
+                "enabled": true,
+                "maxInstances": 2,
+                "minInstances": 1,
+                "rules": [],
+                "scalingBehavior": "launch-terminate"
+            },
+            "networking": {
+                "networks": [
+                    {
+                        "id": "vpc-9483dcf1"
+                    }
+                ],
+                "subnets": [
+                    {
+                        "id": "subnet-d7c5988e"
+                    }
+                ]
+            },
+            "cloudFeatures": {
+                "type": "AwsCloudFeatures",
+                "ebsOptimized": false
+            },
+            "variables": [
+                {
+                    "name": "RequiredVariable",
+                    "value": "ec2option"
+                }
+            ],
+            "orchestration": {
+                "rules": [
+                    {
+                        "trigger": {
+                            "event": {
+                                "id": "HostUp"
+                            },
+                            "triggerType": "SpecificEventTrigger"
+                        },
+                        "target": {
+                            "targetType": "TriggeringServerTarget"
+                        },
+                        "action": {
+                            "actionType": "ScalrScriptAction",
+                            "scriptVersion": {
+                                "script": {
+                                    "name": "demo apache docker"
+                                },
+                                "version": -1
+                            }
+                        },
+                        "timeout": 180,
+                        "runAs": "",
+                        "order": 10,
+                        "blocking": true,
+                        "enabled": true
+                    }
+                ]
+            },
+            "storage": []
+        }
+    ]
+}
+
+
+
+```
